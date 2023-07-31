@@ -1,8 +1,10 @@
+#include <string>
 #include "ColorCode.h"
+#include "global.h"
 
 namespace TelCoColorCoder
 {
-    ColorPair GetColorFromPairNumber(int pairNumber) 
+    ColorPair GetColorFromPairNumber(int pairNumber)
     {
         int zeroBasedPairNumber = pairNumber - 1;
         MajorColor majorColor   = (MajorColor)(zeroBasedPairNumber / numberOfMinorColors);
@@ -17,9 +19,13 @@ namespace TelCoColorCoder
 
     void PrintTelcoColorCode()
     {
-        for(int pairNumber = 0; pairNumber < numberOfMajorColors*numberOfMinorColors; ++pairNumber)
+        std::cout << "************************* COLOR CODE MANUAL *************************" << std::endl << std::endl;
+        std::cout << "-------------------------------------------------------------------" << std::endl;
+
+        for (int pairNumber = 1; pairNumber <= numberOfMajorColors * numberOfMinorColors; ++pairNumber)
         {
-            std::cout << GetColorFromPairNumber(pairNumber).ToString() << std::endl;
+            std::cout << TelCoColorCoder::GetColorFromPairNumber(pairNumber).ToString() << " " << pairNumber << std::endl;
+            std::cout << "-------------------------------------------------------------------" << std::endl;
         }
     }
 }
