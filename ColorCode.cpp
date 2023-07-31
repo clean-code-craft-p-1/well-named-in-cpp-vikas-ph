@@ -1,6 +1,6 @@
 #include <string>
 #include "ColorCode.h"
-#include "global.h"
+#include "Global.h"
 
 namespace TelCoColorCoder
 {
