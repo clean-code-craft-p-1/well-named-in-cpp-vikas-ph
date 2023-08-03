@@ -22,7 +22,7 @@ namespace TelCoColorCoder
         std::string majorColor = colorPair.substr(0, colorPair.find_first_of(" "));
         std::string minorColor = colorPair.substr(colorPair.find_first_of(" "), colorPair.length());
 
-        sprintf(formatedString, formatedStringSize, "%-12s%-14s%-12s", std::to_string(pairNumber).data(), majorColor.data(), minorColor.data());
+        sprintf_s(formatedString, "%-12s%-14s%-12s", std::to_string(pairNumber).data(), majorColor.data(), minorColor.data());
         return formatedString;
     }
 
