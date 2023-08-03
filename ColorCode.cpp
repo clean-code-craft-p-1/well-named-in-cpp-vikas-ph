@@ -15,7 +15,7 @@ namespace TelCoColorCoder
         return major * numberOfMinorColors + minor + 1;
     }
 
-    std::string FormatColorCodeString(const int pairNumber, std::string colorPair) {
+    std::string FormatColorCodeString(const int pairNumber, const std::string& colorPair) {
         const size_t formatedStringSize = 50;
         char formatedString[formatedStringSize] = "";
 
