@@ -16,13 +16,13 @@ namespace TelCoColorCoder
     }
 
     std::string FormatColorCodeString(const int pairNumber, std::string colorPair) {
-        const int formatedStringSize = 50;
+        const size_t formatedStringSize = 50;
         char formatedString[formatedStringSize] = "";
 
         std::string majorColor = colorPair.substr(0, colorPair.find_first_of(" "));
         std::string minorColor = colorPair.substr(colorPair.find_first_of(" "), colorPair.length());
 
-        sprintf_s(formatedString, "%-12s%-14s%-12s", std::to_string(pairNumber).data(), majorColor.data(), minorColor.data());
+        std::snprintf(formatedString, formatedStringSize, "%-12s%-14s%-12s", std::to_string(pairNumber).data(), majorColor.data(), minorColor.data());
         return formatedString;
     }
 
