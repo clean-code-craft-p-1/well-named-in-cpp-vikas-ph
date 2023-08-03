@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <string>
-#include "Global.h"
+#include "ColorPairConstants.h"
 
 namespace TelCoColorCoder
 {

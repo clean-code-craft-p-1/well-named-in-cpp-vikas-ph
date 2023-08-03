@@ -1,10 +1,19 @@
-#include <iostream>
-#include <string>
 #include "assert.h"
 #include "TelcoColorCoderTest.h"
-#include "ColorCode.h"
 
 using namespace TelCoColorCoder;
+
+void testPrintTelCoColorCoderReferenceManual(std::vector<std::string> actualTelcoColorCodeList)
+{
+    std::vector<std::string> expectedTelcoColorCodeList = PrintTelcoColorCodeReferenceManual();
+
+    assert(actualTelcoColorCodeList.size() == expectedTelcoColorCodeList.size());
+
+    for (unsigned int index = 0u; index < actualTelcoColorCodeList.size(); ++index)
+    {
+        assert(actualTelcoColorCodeList[index] == expectedTelcoColorCodeList[index]);
+    }
+}
 
 void testNumberToPair(int pairNumber,
                       TelCoColorCoder::MajorColor expectedMajor,

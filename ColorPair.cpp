@@ -24,7 +24,7 @@ namespace TelCoColorCoder
         return minorColor;
     }
 
-    // Return color pair to string
+    // Get color pair names to string
     std::string ColorPair::ToString()
     {
         std::string colorPairStr = MajorColorNames[majorColor];

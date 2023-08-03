@@ -2,6 +2,9 @@
 #define TELCOCOLORCODERTEST_H
 
 #include "ColorPair.hpp"
+#include "ColorCode.h"
+
+void testPrintTelCoColorCoderReferenceManual(std::vector<std::string> actualTelcoColorCodeList);
 
 void testNumberToPair(int pairNumber,
                       TelCoColorCoder::MajorColor expectedMajor,

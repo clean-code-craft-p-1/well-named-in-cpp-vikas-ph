@@ -2,6 +2,7 @@
 #define COLORCODE_H
 
 #include <iostream>
+#include <vector>
 #include "ColorPair.hpp"
 
 namespace TelCoColorCoder
@@ -10,7 +11,7 @@ namespace TelCoColorCoder
 
     int GetPairNumberFromColor(MajorColor major, MinorColor minor);
 
-    void PrintTelcoColorCode();
+    std::vector<std::string> PrintTelcoColorCodeReferenceManual();
 }
 
 #endif // !COLORCODE_H

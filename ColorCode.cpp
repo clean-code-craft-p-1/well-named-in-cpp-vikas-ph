@@ -1,10 +1,8 @@
-#include <string>
 #include "ColorCode.h"
-#include "Global.h"
 
 namespace TelCoColorCoder
 {
-    ColorPair GetColorFromPairNumber(int pairNumber)
+    ColorPair GetColorFromPairNumber(int pairNumber) 
     {
         int zeroBasedPairNumber = pairNumber - 1;
         MajorColor majorColor   = (MajorColor)(zeroBasedPairNumber / numberOfMinorColors);
@@ -17,15 +15,39 @@ namespace TelCoColorCoder
         return major * numberOfMinorColors + minor + 1;
     }
 
-    void PrintTelcoColorCode()
+    std::string FormatColorCodeString(const int pairNumber, std::string colorPair)
     {
-        std::cout << "************************* COLOR CODE MANUAL *************************" << std::endl << std::endl;
-        std::cout << "-------------------------------------------------------------------" << std::endl;
+        const int formatedStringSize = 50;
+        char formatedString[formatedStringSize] = "";
 
-        for (int pairNumber = 1; pairNumber <= numberOfMajorColors * numberOfMinorColors; ++pairNumber)
+        std::string majorColor = colorPair.substr(0, colorPair.find_first_of(" "));
+        std::string minorColor = colorPair.substr(colorPair.find_first_of(" "), colorPair.length());
+
+        sprintf_s(formatedString, formatedStringSize, "%-12s%-14s%-12s",
+                                                      std::to_string(pairNumber).data(),
+                                                      majorColor.data(),
+                                                      minorColor.data());
+        return formatedString;
+    }
+
+    std::vector<std::string> PrintTelcoColorCodeReferenceManual()
+    {
+        std::vector<std::string> telcoColorCodeList = {};
+
+        telcoColorCodeList.push_back("--------------------------------------");
+        telcoColorCodeList.push_back("Pair no.    Major color    Minor color");
+        telcoColorCodeList.push_back("--------------------------------------");
+
+        std::cout << telcoColorCodeList[0] << std::endl;
+        std::cout << telcoColorCodeList[1] << std::endl;
+        std::cout << telcoColorCodeList[2] << std::endl;
+
+        for(int pairNumber = 1; pairNumber < numberOfMajorColors*numberOfMinorColors; ++pairNumber)
         {
-            std::cout << TelCoColorCoder::GetColorFromPairNumber(pairNumber).ToString() << " " << pairNumber << std::endl;
-            std::cout << "-------------------------------------------------------------------" << std::endl;
+            std::string telcoColorCode = FormatColorCodeString(pairNumber, GetColorFromPairNumber(pairNumber).ToString());
+            telcoColorCodeList.push_back(telcoColorCode);
+            std::cout << telcoColorCode << std::endl;
         }
+        return telcoColorCodeList;
     }
 }
